@@ -1,0 +1,13 @@
+./a.out
+.DS_Store
+*.a
+*.o
+*.swo
+*.swn
+.nfs*
+*.swp
+.vscode
+settings.json
+*.pdf
+*_exe
+evaluations

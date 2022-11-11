@@ -2,9 +2,7 @@
 
 SpellBook::~SpellBook()
 {
-	std::map<string, ASpell *>::iterator it;
-
-	for (it = arr.begin(); it != arr.end(); it++)
+	for (std::map<string, ASpell *>::iterator it = arr.begin(); it != arr.end(); it++)
 		delete it->second;
 	arr.clear();
 }
@@ -18,16 +16,15 @@ void SpellBook::learnSpell(ASpell *spell)
 
 void SpellBook::forgetSpell(string const &spell_name)
 {
-	ASpell *spell = arr[spell_name];
-	if (spell)
-		delete spell;
+	if(arr.find(spell_name) == arr.end())
+		return;
+	delete arr.at(spell_name);
 	arr.erase(spell_name);
 }
 
 ASpell *SpellBook::createSpell(string const &spell_name)
 {
-	ASpell *spell = arr[spell_name];
-	if (spell)
-		return spell;
-	return NULL;
+	if(arr.find(spell_name) == arr.end())
+		return NULL;
+	return arr.at(spell_name);
 }

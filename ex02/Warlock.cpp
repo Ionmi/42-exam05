@@ -12,15 +12,14 @@ void Warlock::learnSpell(ASpell *spell)
 
 void Warlock::forgetSpell(string spell_name)
 {
-    book.forgetSpell(spell_name);
+	book.forgetSpell(spell_name);
 }
 
 void Warlock::launchSpell(string spell_name, ATarget const &target)
 {
-    ATarget const *aux = NULL;
-    if (&target == aux)
-        return;
-    ASpell *temp = book.createSpell(spell_name);
-    if (temp)
-        temp->launch(target);
+	ASpell *spell = book.createSpell(spell_name);
+	ATarget const *constTarget = NULL;
+	if (!spell || &target == constTarget)
+		return;
+	spell->launch(target);
 }

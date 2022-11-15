@@ -6,12 +6,13 @@
 
 using std::cout;
 using std::string;
+typedef std::map<string, ASpell *> Map;
 
 class Warlock
 {
 	string name;
 	string title;
-	std::map<string, ASpell *> arr;
+	Map arr;
 
 	Warlock();
 	Warlock(const Warlock &other);

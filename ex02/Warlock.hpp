@@ -12,7 +12,7 @@ class Warlock
 {
 	string name;
 	string title;
-	std::map<string, ASpell *> arr;
+	Map arr;
 	SpellBook book;
 
 	Warlock();

@@ -4,7 +4,7 @@ Warlock::~Warlock()
 {
 	cout << name << ": My job here is done!\n";
 
-	for (std::map<std::string, ASpell *>::iterator it = arr.begin(); it != arr.end(); it++)
+	for (Map::iterator it = arr.begin(); it != arr.end(); it++)
 		delete it->second;
 	this->arr.clear();
 }

@@ -2,10 +2,11 @@
 
 #include "ASpell.hpp"
 #include <map>
+typedef std::map<string, ASpell *> Map;
 
 class SpellBook
 {
-	std::map<std::string, ASpell *> arr;
+	Map arr;
 
 	SpellBook(SpellBook const &other);
 	SpellBook &operator=(SpellBook const &other);

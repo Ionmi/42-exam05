@@ -2,7 +2,7 @@
 
 SpellBook::~SpellBook()
 {
-	for (std::map<string, ASpell *>::iterator it = arr.begin(); it != arr.end(); it++)
+	for (Map::iterator it = arr.begin(); it != arr.end(); it++)
 		delete it->second;
 	arr.clear();
 }

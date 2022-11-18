@@ -1,38 +1,30 @@
 #include "TargetGenerator.hpp"
 
-TargetGenerator::TargetGenerator()
-{}
-
 TargetGenerator::~TargetGenerator()
 {
-    std::map<std::string, ATarget *>::iterator it_begin = this->arr_target.begin();
-    std::map<std::string, ATarget *>::iterator it_end = this->arr_target.end();
-    while (it_begin != it_end)
-    {
-        delete it_begin->second;
-        ++it_begin;
-    }
-    this->arr_target.clear();
-}
-
-void TargetGenerator::learnTargetType(ATarget* target_ptr)
-{
-    if (target_ptr)
-        arr_target.insert(std::pair<std::string, ATarget *>(target_ptr->getType(), target_ptr->clone()));
-}
-
-void TargetGenerator::forgetTargetType(const std::string &target_name)
-{
-    std::map<std::string, ATarget *>::iterator it = arr_target.find(target_name);
-	if (it != arr_target.end())
+	for (TargetMap::iterator it = arr.begin(); it != arr.end(); it++)
 		delete it->second;
-    arr_target.erase(target_name);
+	arr.clear();
 }
 
-ATarget* TargetGenerator::createTarget(const std::string &target_name)
+void TargetGenerator::learnTargetType(ATarget *target)
 {
-    std::map<std::string, ATarget *>::iterator it = arr_target.find(target_name);
-    if (it != arr_target.end())
-        return arr_target[target_name];
-    return NULL;
+	if (!target)
+		return;
+	arr.insert(std::make_pair(target->getType(), target->clone()));
+}
+
+void TargetGenerator::forgetTargetType(const string &target_name)
+{
+	if(arr.find(target_name) == arr.end())
+		return;
+	delete arr.at(target_name);
+	arr.erase(target_name);
+}
+
+ATarget *TargetGenerator::createTarget(const string &target_name)
+{
+	if(arr.find(target_name) == arr.end())
+		return NULL;
+	return arr.at(target_name);
 }

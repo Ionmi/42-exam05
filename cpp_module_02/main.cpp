@@ -1,10 +1,10 @@
 #include "Warlock.hpp"
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
-#include "BrickWall.hpp"
 #include "Polymorph.hpp"
 #include "TargetGenerator.hpp"
 #include "Fireball.hpp"
+#include "BrickWall.hpp"
 
 int main()
 {
@@ -28,3 +28,4 @@ int main()
   richard.launchSpell("Polymorph", *wall);
   richard.launchSpell("Fireball", *wall);
 }
+

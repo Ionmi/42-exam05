@@ -1,12 +1,10 @@
-#pragma once
-
 #include "ASpell.hpp"
 
-class Fwoosh: public ASpell
+class Fwoosh : public ASpell
 {
-    public:
-        Fwoosh();
-        ~Fwoosh();
+public:
+	Fwoosh() : ASpell("Fwoosh", "fwooshed"){};
+	~Fwoosh(){};
 
-        virtual ASpell *clone() const;
+	virtual ASpell *clone() const { return new Fwoosh(); };
 };

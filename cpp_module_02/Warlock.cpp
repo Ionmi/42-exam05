@@ -1,40 +1,23 @@
 #include "Warlock.hpp"
 
-Warlock::Warlock(std::string const &name, std::string const &title)
-{
-    this->name = name;
-    this->title = title;
-    std::cout << this->name << ": This looks like another boring day.\n";
-}
-
 Warlock::~Warlock()
 {
-    std::cout << this->name << ": My job here is done!\n";
+	cout << name << ": My job here is done!\n";
 }
 
-std::string const &Warlock::getName() const { return (this->name);}
-std::string const &Warlock::getTitle() const { return (this->title);}
-
-void Warlock::setTitle(std::string const &title) { this->title = title;}
-
-void Warlock::introduce() const { std::cout << this->name << ": I am " << this->name << ", " << this->title << "!\n";}
-
-void Warlock::learnSpell(ASpell *aspell_ptr)
+void Warlock::learnSpell(ASpell *spell)
 {
-    book.learnSpell(aspell_ptr);
+	book.learnSpell(spell);
 }
 
-void Warlock::forgetSpell(std::string name)
+void Warlock::forgetSpell(string spell_name)
 {
-    book.forgetSpell(name);
+	book.forgetSpell(spell_name);
 }
 
-void Warlock::launchSpell(std::string name, ATarget const &atarget_ref)
+void Warlock::launchSpell(string spell_name, ATarget const &target)
 {
-    ATarget const *test = 0;
-    if (test == &atarget_ref)
-        return;
-    ASpell *temp = book.createSpell(name);
-    if (temp)
-        temp->launch(atarget_ref);
+	if (!book.createSpell(spell_name)) 
+		return;
+	book.createSpell(spell_name)->launch(target);
 }

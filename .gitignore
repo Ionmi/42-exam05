@@ -7,7 +7,3 @@
 .nfs*
 *.swp
 .vscode
-settings.json
-*.pdf
-*_exe
-evaluations

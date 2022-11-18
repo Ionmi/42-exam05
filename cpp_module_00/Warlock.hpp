@@ -1,24 +1,28 @@
-#pragma once
-
 #include <iostream>
+
+using std::cout;
+using std::string;
 
 class Warlock
 {
-    private:
-        std::string name;
-        std::string title;
+	string name;
+	string title;
 
-        Warlock();
-        Warlock(Warlock const &other);
-        Warlock &operator=(Warlock const &other);
-    public:
-        Warlock(std::string const &name, std::string const &title);
-        ~Warlock();
+	Warlock();
+	Warlock(const Warlock &other);
+	Warlock &operator=(const Warlock &other);
 
-        std::string const &getName() const;
-        std::string const &getTitle() const;
+public:
+	Warlock(const string &name, const string &title) : name(name), title(title)
+	{
+		cout << name << ": This looks like another boring day.\n";
+	}
+	~Warlock() { cout << name << ": My job here is done!\n"; }
 
-        void setTitle(std::string const &title);
+	const string &getName() const { return name; };
+	const string &getTitle() const { return title; };
 
-        void introduce() const;
+	void setTitle(const string &title) { this->title = title; };
+
+	void introduce() const { cout << name << ": I am " << name << ", " << title << "!\n"; };
 };

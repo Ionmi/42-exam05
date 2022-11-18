@@ -1,33 +1,38 @@
 #pragma once
-
 #include <iostream>
+#include <map>
 #include "ASpell.hpp"
 #include "ATarget.hpp"
-#include <map>
+
+using std::cout;
+using std::string;
+typedef std::map<string, ASpell *> SpellMap;
 
 class Warlock
 {
-    private:
-        std::string name;
-        std::string title;
+	string name;
+	string title;
+	SpellMap arr;
 
-        Warlock();
-        Warlock(Warlock const &other);
-        Warlock &operator=(Warlock const &other);
+	Warlock();
+	Warlock(const Warlock &other);
+	Warlock &operator=(const Warlock &other);
 
-        std::map<std::string, ASpell *> arr;
-    public:
-        Warlock(std::string const &name, std::string const &title);
-        ~Warlock();
+public:
+	Warlock(const string &name, const string &title) : name(name), title(title)
+	{
+		cout << name << ": This looks like another boring day.\n";
+	}
+	~Warlock();
 
-        std::string const &getName() const;
-        std::string const &getTitle() const;
+	const string &getName() const { return name; };
+	const string &getTitle() const { return title; };
 
-        void setTitle(std::string const &title);
+	void setTitle(const string &title) { this->title = title; };
 
-        void introduce() const;
+	void introduce() const { cout << name << ": I am " << name << ", " << title << "!\n"; };
 
-        void learnSpell(ASpell *aspell_ptr);
-        void forgetSpell(std::string name);
-        void launchSpell(std::string name, ATarget const &atarget_ref);
+	void learnSpell(ASpell *spell);
+	void forgetSpell(const string name);
+	void launchSpell(const string name, const ATarget &target);
 };

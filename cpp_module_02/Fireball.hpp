@@ -1,12 +1,10 @@
-#pragma once
-
 #include "ASpell.hpp"
 
-class Fireball: public ASpell
+class Fireball : public ASpell
 {
-    public:
-        Fireball();
-        ~Fireball();
+public:
+	Fireball() : ASpell("Fireball", "burnt to a crisp"){};
+	~Fireball(){};
 
-        virtual ASpell *clone() const;
+	virtual ASpell *clone() const { return new Fireball(); };
 };
